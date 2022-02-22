@@ -1,0 +1,6 @@
+
+CREATE PROC availableCourses
+AS
+SELECT Course.name, Course.id FROM Course LEFT OUTER JOIN StudentTakeCourse ON Course.id = StudentTakeCourse.cid 
+LEFT OUTER JOIN Student ON StudentTakeCourse.sid = Student.id
+WHERE Course.accepted = '1' AND StudentTakeCourse.sid IS NULL
