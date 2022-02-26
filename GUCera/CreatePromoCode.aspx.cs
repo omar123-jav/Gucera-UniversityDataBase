@@ -13,11 +13,16 @@ namespace GUCera
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["User_ID"] == null)
+            {
+                Response.Redirect("ErrorPage.aspx");
+            }
+            UserLabel.Text = Session["Username"].ToString();
         }
 
         protected void create_Click(object sender, EventArgs e)
         {
+
             string connString = WebConfigurationManager.ConnectionStrings["GUCera"].ToString();
 
             SqlConnection conn = new SqlConnection(connString);
@@ -35,8 +40,19 @@ namespace GUCera
             conn.Open();
             logproc.ExecuteNonQuery();
             conn.Close();
-            Response.Write("Promo Code Created Succesfully");
+            MessageLabel.Text = ("Promo Code Created Succesfully");
 
+        }
+
+        protected void Home_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Admin Homepage.aspx");
+        }
+
+        protected void Signout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

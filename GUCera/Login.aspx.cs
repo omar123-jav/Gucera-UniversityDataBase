@@ -14,7 +14,7 @@ namespace GUCera
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void loginButton_Click(object sender, EventArgs e)
@@ -46,12 +46,36 @@ namespace GUCera
             if (succ.Value.ToString() == "1")
             {
                 Session["User_ID"] = id;
-                Response.Redirect("~/Accept Courses.aspx");
+                Session["User_Type"] = type.Value.ToString();
+                SqlCommand findName = new SqlCommand("SELECT firstName,lastName FROM Users WHERE id = " + id, conn);
+
+                conn.Open();
+                SqlDataReader rdr = findName.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+                while (rdr.Read())
+                {
+                    Session["Username"] = rdr[0].ToString() + " " + rdr[1].ToString();
+                }
+                conn.Close();
+                if (type.Value.ToString() == "2")
+                {
+                    Response.Redirect("~/ViewStudentProfile.aspx");
+                }
+                else if(type.Value.ToString() == "1")
+                {
+                    Response.Redirect("~/Admin Homepage.aspx");
+                }
+                else
+                {
+                    Response.Redirect("~/InstructorHome.aspx");
+                }
+                
+                
             }
             else
                 MessageLabel.Text = ("Wrong username or password");
 
-
+            
+            
 
         }
 

@@ -13,7 +13,11 @@ namespace GUCera
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["User_ID"] == null)
+            {
+                Response.Redirect("ErrorPage.aspx");
+            }
+            UserLabel.Text = Session["Username"].ToString();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -41,8 +45,19 @@ namespace GUCera
                 return;
             }
             conn.Close();
-            Response.Write("Promo Code Issued Succesfully");
+            MessageLabel.Text = ("Promo Code Issued Succesfully");
 
+        }
+
+        protected void Home_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Admin Homepage.aspx");
+        }
+
+        protected void Signout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)

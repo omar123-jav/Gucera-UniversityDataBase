@@ -14,7 +14,12 @@ namespace GUCera
         protected int id;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User_ID"] == null)
+            {
+                Response.Redirect("ErrorPage.aspx");
+            }
             id = Int32.Parse(Session["User_id"].ToString());
+            UserLabel.Text = Session["Username"].ToString();
         }
 
         protected void addNumberButton_Click(object sender, EventArgs e)
@@ -48,7 +53,18 @@ namespace GUCera
 
         protected void homeButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/ViewStudentProfile.aspx");
+            if(Session["User_Type"].ToString() == "2")
+                Response.Redirect("~/ViewStudentProfile.aspx");
+            else if (Session["User_Type"].ToString() == "1")
+                Response.Redirect("~/Admin Homepage.aspx");
+            else
+                Response.Redirect("~/InstructorHome.aspx");
+        }
+
+        protected void Signout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

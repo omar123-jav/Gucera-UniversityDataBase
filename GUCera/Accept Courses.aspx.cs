@@ -13,7 +13,11 @@ namespace GUCera
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["User_ID"] == null)
+            {
+                Response.Redirect("ErrorPage.aspx");
+            }
+            UserLabel.Text = Session["Username"].ToString();
         }
 
         protected void Accept_Click(object sender, EventArgs e)
@@ -31,8 +35,19 @@ namespace GUCera
             conn.Open();
             logproc.ExecuteNonQuery();
             conn.Close();
-            Response.Write("Course Accepted Succesfully");
+            MessageLabel.Text = "Course Accepted Successfully";
 
+        }
+
+        protected void Home_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Admin Homepage.aspx");
+        }
+
+        protected void Signout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

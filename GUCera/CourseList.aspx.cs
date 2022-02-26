@@ -12,14 +12,19 @@ namespace GUCera
 {
     public partial class CourseList : System.Web.UI.Page
     {
-        protected int id=1;
+        protected int id;
         SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["GUCera"].ToString());
 
         protected string[,] n;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //id = Int32.Parse(Session["regSelect"].ToString()); 
+            if (Session["User_ID"] == null)
+            {
+                Response.Redirect("ErrorPage.aspx");
+            }
+            id = Int32.Parse(Session["User_ID"].ToString()); 
+            UserLabel.Text = Session["Username"].ToString();
 
             SqlCommand getCourseProc = new SqlCommand("dbo.availableCourses", conn);
             getCourseProc.CommandType = System.Data.CommandType.StoredProcedure;
@@ -129,30 +134,36 @@ namespace GUCera
                     }
                 }
 
-                Response.Write(target);
+                //Response.Write(target);
                 enrollProc.Parameters.Add(new SqlParameter("@instr",n[target,2]));
 
 
                 conn.Open();
                 enrollProc.ExecuteNonQuery();
-                //Response.Write("You are now Enrolled in " + enrollList.SelectedItem.Text);
+                MessageLabel.Text = ("You are now Enrolled in " + enrollList.SelectedItem.Text);
                 //Response.redirect("~/StudentHome.aspx");
                 conn.Close();
             }
             catch(IndexOutOfRangeException)
             {
-                Response.Write("You just enrolled in this course");
+                MessageLabel.Text = ("You just enrolled in this course");
             }
             catch(SqlException)
             {
                 //Response.Write(exp.ToString());
-                Response.Write("You are already enrolled in " + enrollList.SelectedItem.Text);
+                MessageLabel.Text = ("You are already enrolled in " + enrollList.SelectedItem.Text);
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/ViewStudentProfile.aspx");
+        }
+
+        protected void Signout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

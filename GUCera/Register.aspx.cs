@@ -59,10 +59,12 @@ namespace GUCera
                     return;
                 }
             }
+
             conn.Close();
+
             conn.Open();
+
             registerProc.ExecuteNonQuery();
-            
 
             SqlCommand getId = new SqlCommand("select max(id) From Users",conn);
 

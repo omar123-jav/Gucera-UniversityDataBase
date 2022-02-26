@@ -13,11 +13,16 @@ namespace GUCera
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User_ID"] == null)
+            {
+                Response.Redirect("ErrorPage.aspx");
+            }
             if (DropDownList1.Items.Count == 0)
             {
                 DropDownList1.DataBind();
                 DropDownList1_SelectedIndexChanged(DropDownList1, e);
             }
+            UserLabel.Text = Session["Username"].ToString();
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,6 +71,12 @@ namespace GUCera
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/ViewStudentProfile.aspx");
+        }
+
+        protected void Signout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

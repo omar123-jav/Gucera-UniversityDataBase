@@ -68,22 +68,34 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Accept Courses.aspx" />
-    <Content Include="CreatePromoCode.aspx" />
-    <Content Include="IssuePromoCode.aspx" />
-    <Content Include="View non-accepted Courses.aspx" />
     <Content Include="addCreditCard.aspx" />
     <Content Include="AddFeedback.aspx" />
+    <Content Include="AddNewCourse.aspx" />
+    <Content Include="AddNewInstructor.aspx" />
     <Content Include="addTelephoneNumber.aspx" />
-    <Content Include="All Instructors.aspx" />
+    <Content Include="Admin Homepage.aspx" />
     <Content Include="CourseList.aspx" />
+    <Content Include="CreatePromoCode.aspx" />
+    <Content Include="DefineAssignments.aspx" />
+    <Content Include="ErrorPage.aspx" />
+    <Content Include="GradeAssignments.aspx" />
+    <Content Include="InstructorHome.aspx" />
+    <Content Include="IssueCert.aspx" />
+    <Content Include="IssuePromoCode.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="RegistrationSelect.aspx" />
     <Content Include="SubmitAssignment.aspx" />
+    <Content Include="UpdateContent.aspx" />
+    <Content Include="UpdateCourse.aspx" />
+    <Content Include="UpdateDescription.aspx" />
     <Content Include="View All Courses.aspx" />
+    <Content Include="View non-accepted Courses.aspx" />
     <Content Include="ViewAssignGrades.aspx" />
     <Content Include="ViewAssignmentContent.aspx" />
+    <Content Include="ViewAssignments.aspx" />
     <Content Include="ViewCertificate.aspx" />
+    <Content Include="ViewFeedbacks.aspx" />
     <Content Include="viewMyPromoCodes.aspx" />
     <Content Include="ViewStudentProfile.aspx" />
     <Content Include="Web.config" />
@@ -95,27 +107,6 @@
     </Compile>
     <Compile Include="Accept Courses.aspx.designer.cs">
       <DependentUpon>Accept Courses.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CreatePromoCode.aspx.cs">
-      <DependentUpon>CreatePromoCode.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CreatePromoCode.aspx.designer.cs">
-      <DependentUpon>CreatePromoCode.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="IssuePromoCode.aspx.cs">
-      <DependentUpon>IssuePromoCode.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="IssuePromoCode.aspx.designer.cs">
-      <DependentUpon>IssuePromoCode.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View non-accepted Courses.aspx.cs">
-      <DependentUpon>View non-accepted Courses.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View non-accepted Courses.aspx.designer.cs">
-      <DependentUpon>View non-accepted Courses.aspx</DependentUpon>
     </Compile>
     <Compile Include="addCreditCard.aspx.cs">
       <DependentUpon>addCreditCard.aspx</DependentUpon>
@@ -131,6 +122,20 @@
     <Compile Include="AddFeedback.aspx.designer.cs">
       <DependentUpon>AddFeedback.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AddNewCourse.aspx.cs">
+      <DependentUpon>AddNewCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddNewCourse.aspx.designer.cs">
+      <DependentUpon>AddNewCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewInstructor.aspx.cs">
+      <DependentUpon>AddNewInstructor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddNewInstructor.aspx.designer.cs">
+      <DependentUpon>AddNewInstructor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="addTelephoneNumber.aspx.cs">
       <DependentUpon>addTelephoneNumber.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -138,12 +143,12 @@
     <Compile Include="addTelephoneNumber.aspx.designer.cs">
       <DependentUpon>addTelephoneNumber.aspx</DependentUpon>
     </Compile>
-    <Compile Include="All Instructors.aspx.cs">
-      <DependentUpon>All Instructors.aspx</DependentUpon>
+    <Compile Include="Admin Homepage.aspx.cs">
+      <DependentUpon>Admin Homepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="All Instructors.aspx.designer.cs">
-      <DependentUpon>All Instructors.aspx</DependentUpon>
+    <Compile Include="Admin Homepage.aspx.designer.cs">
+      <DependentUpon>Admin Homepage.aspx</DependentUpon>
     </Compile>
     <Compile Include="CourseList.aspx.cs">
       <DependentUpon>CourseList.aspx</DependentUpon>
@@ -151,6 +156,55 @@
     </Compile>
     <Compile Include="CourseList.aspx.designer.cs">
       <DependentUpon>CourseList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreatePromoCode.aspx.cs">
+      <DependentUpon>CreatePromoCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreatePromoCode.aspx.designer.cs">
+      <DependentUpon>CreatePromoCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DefineAssignments.aspx.cs">
+      <DependentUpon>DefineAssignments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DefineAssignments.aspx.designer.cs">
+      <DependentUpon>DefineAssignments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GradeAssignments.aspx.cs">
+      <DependentUpon>GradeAssignments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GradeAssignments.aspx.designer.cs">
+      <DependentUpon>GradeAssignments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InstructorHome.aspx.cs">
+      <DependentUpon>InstructorHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InstructorHome.aspx.designer.cs">
+      <DependentUpon>InstructorHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IssueCert.aspx.cs">
+      <DependentUpon>IssueCert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IssueCert.aspx.designer.cs">
+      <DependentUpon>IssueCert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IssuePromoCode.aspx.cs">
+      <DependentUpon>IssuePromoCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IssuePromoCode.aspx.designer.cs">
+      <DependentUpon>IssuePromoCode.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -181,12 +235,40 @@
     <Compile Include="SubmitAssignment.aspx.designer.cs">
       <DependentUpon>SubmitAssignment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UpdateContent.aspx.cs">
+      <DependentUpon>UpdateContent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateContent.aspx.designer.cs">
+      <DependentUpon>UpdateContent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateCourse.aspx.cs">
+      <DependentUpon>UpdateCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateCourse.aspx.designer.cs">
+      <DependentUpon>UpdateCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateDescription.aspx.cs">
+      <DependentUpon>UpdateDescription.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateDescription.aspx.designer.cs">
+      <DependentUpon>UpdateDescription.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View All Courses.aspx.cs">
       <DependentUpon>View All Courses.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View All Courses.aspx.designer.cs">
       <DependentUpon>View All Courses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View non-accepted Courses.aspx.cs">
+      <DependentUpon>View non-accepted Courses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View non-accepted Courses.aspx.designer.cs">
+      <DependentUpon>View non-accepted Courses.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewAssignGrades.aspx.cs">
       <DependentUpon>ViewAssignGrades.aspx</DependentUpon>
@@ -202,12 +284,26 @@
     <Compile Include="ViewAssignmentContent.aspx.designer.cs">
       <DependentUpon>ViewAssignmentContent.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ViewAssignments.aspx.cs">
+      <DependentUpon>ViewAssignments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewAssignments.aspx.designer.cs">
+      <DependentUpon>ViewAssignments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewCertificate.aspx.cs">
       <DependentUpon>ViewCertificate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewCertificate.aspx.designer.cs">
       <DependentUpon>ViewCertificate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFeedbacks.aspx.cs">
+      <DependentUpon>ViewFeedbacks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewFeedbacks.aspx.designer.cs">
+      <DependentUpon>ViewFeedbacks.aspx</DependentUpon>
     </Compile>
     <Compile Include="viewMyPromoCodes.aspx.cs">
       <DependentUpon>viewMyPromoCodes.aspx</DependentUpon>

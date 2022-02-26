@@ -14,8 +14,13 @@ namespace GUCera
         protected int id;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User_ID"] == null)
+            {
+                Response.Redirect("ErrorPage.aspx");
+            }
             id = Int32.Parse(Session["User_ID"].ToString());
-            
+            UserLabel.Text = Session["Username"].ToString();
+
             string connString = WebConfigurationManager.ConnectionStrings["GUCera"].ToString();
 
             SqlConnection conn = new SqlConnection(connString);
@@ -82,6 +87,17 @@ namespace GUCera
         protected void Button8_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/ViewCertificate.aspx");
+        }
+
+        protected void Button9_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AddFeedback.aspx");
+        }
+
+        protected void Signout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

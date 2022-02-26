@@ -14,6 +14,12 @@ namespace GUCera
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User_ID"] == null)
+            {
+                Response.Redirect("ErrorPage.aspx");
+            }
+            UserLabel.Text = Session["Username"].ToString();
+
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["GUCera"].ToString());
             SqlCommand com = new SqlCommand("dbo.AdminViewNonAcceptedCourses", conn);
             com.CommandType = CommandType.StoredProcedure;
@@ -30,11 +36,24 @@ namespace GUCera
                 
 
                 Label instname = new Label();
-                instname.Text = name + " " + cr + " " + price + " " + cont;
-                form1.Controls.Add(instname);
+                instname.Text = "Course Name: " + name + ", Credit Hours: " + cr + ", Price: " + price + ", Content: " + cont;
+                PlaceDiv.Controls.Add(instname);
+                PlaceDiv.Controls.Add(new LiteralControl("<br />"));
+
 
             }
             conn.Close();
+        }
+
+        protected void Home_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Admin Homepage.aspx");
+        }
+
+        protected void Signout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

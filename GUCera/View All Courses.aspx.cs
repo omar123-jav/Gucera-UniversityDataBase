@@ -14,6 +14,12 @@ namespace GUCera
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User_ID"] == null)
+            {
+                Response.Redirect("ErrorPage.aspx");
+            }
+            UserLabel.Text = Session["Username"].ToString();
+
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["GUCera"].ToString());
             SqlCommand com = new SqlCommand("dbo.AdminViewAllCourses", conn);
             com.CommandType = CommandType.StoredProcedure;
@@ -25,18 +31,30 @@ namespace GUCera
                 decimal price = rdr.GetDecimal(rdr.GetOrdinal("price"));
                 int cr = rdr.GetInt32(rdr.GetOrdinal("credithours"));
                 int content = rdr.GetOrdinal("content");
-                string cont= rdr.IsDBNull(content) ? null : rdr.GetString(content);
+                string cont= rdr.IsDBNull(content) ? "No Content Yet" : rdr.GetString(content);
 
                 int acc = rdr.GetOrdinal("accepted");
-                int accepted = rdr.IsDBNull(acc) ? 0 : rdr.GetInt32(acc);
+                bool accepted = rdr.IsDBNull(acc) ? false : rdr.GetBoolean(acc);
 
                 Label instname = new Label();
-                instname.Text = name+" "+cr+" "+price+" "+cont+" "+accepted;
-                form1.Controls.Add(instname);
+                instname.Text = "Course Name: "+name+", Credit Hours: "+cr+ ", Price: " + price+ ", Content: " + cont+ ", Accepted: " + accepted;
+                PlaceDiv.Controls.Add(instname);
+                PlaceDiv.Controls.Add(new LiteralControl("<br />"));
 
             }
             conn.Close();
 
+        }
+
+        protected void Home_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Admin Homepage.aspx");
+        }
+
+        protected void Signout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

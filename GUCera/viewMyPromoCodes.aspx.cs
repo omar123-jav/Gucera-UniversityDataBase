@@ -12,10 +12,15 @@ namespace GUCera
 {
     public partial class viewMyPromoCodes : System.Web.UI.Page
     {
-        protected int id = 1;
+        protected int id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //id = Int32.Parse(Session["regSelect"].ToString());
+            if (Session["User_ID"] == null)
+            {
+                Response.Redirect("ErrorPage.aspx");
+            }
+            id = Int32.Parse(Session["User_ID"].ToString());
+            UserLabel.Text = Session["Username"].ToString();
             string connString = WebConfigurationManager.ConnectionStrings["GUCera"].ToString();
 
             SqlConnection conn = new SqlConnection(connString);
@@ -43,6 +48,11 @@ namespace GUCera
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/ViewStudentProfile.aspx");
+        }
+        protected void Signout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

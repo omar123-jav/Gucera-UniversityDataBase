@@ -14,8 +14,12 @@ namespace GUCera
         protected int id;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User_ID"] == null)
+            {
+                Response.Redirect("ErrorPage.aspx");
+            }
             id = Int32.Parse(Session["User_ID"].ToString());
-            
+            UserLabel.Text = Session["Username"].ToString();
         }
 
         protected void add_Click(object sender, EventArgs e)
@@ -40,7 +44,7 @@ namespace GUCera
             }
             catch
             {
-                Response.Write("credit card already added");
+                MessageLabel.Text = "Credit Card Already Added";
             }
             conn.Close();
         }
@@ -48,6 +52,12 @@ namespace GUCera
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/ViewStudentProfile.aspx");
+        }
+
+        protected void Signout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }
